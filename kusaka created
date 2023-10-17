@@ -1,0 +1,35 @@
+
+game:GetService("StarterGui"):SetCore("SendNotification",{
+	Title = "Script by Kusaka & Hosvile",
+	Text = "'Kusaka king' -Hosvile (This is the best paid script)",
+	Duration = 7
+})
+
+if makefolder and isfolder and not isfolder("Infinixity") then
+	makefolder("Infinixity")
+end
+
+local Games = {
+	["BladeBall"] = {PlaceId = {13772394625, 4777817887, 14915220621, 14732610803}, Source = {"https://raw.githubusercontent.com/Hosvile/InfiniX/main/Blade%20Ball/main.lua"}};
+}
+
+local LoadedSource = false
+for Game, Data in pairs(Games) do
+	for _, Id in pairs(Data.PlaceId) do
+		if game.PlaceId == Id then
+			warn("Loaded", Game)
+			if isfolder and makefolder and not isfolder("Infinixity/" .. Game) then
+				makefolder("Infinixity/" .. Game)
+			end
+			for _, Source in pairs(Data.Source) do
+				loadstring(game:HttpGet(Source))()
+			end
+			LoadedSource = true
+		else
+		end
+	end
+end
+
+if not LoadedSource then
+	warn("Unkown PlaceId:", game.PlaceId)
+end
